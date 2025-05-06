@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "768390824250",
+    "project_id": "authenticationapp-d26c5",
+    "storage_bucket": "authenticationapp-d26c5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768390824250:android:d034e46a307be77d28d003",
+        "android_client_info": {
+          "package_name": "com.example.task_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqE3-eVPP29sk8B2TsVuCR3Pp9ynibGmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
