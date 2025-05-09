@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:task_app/screens/task_form_screen.dart';
 import 'package:task_app/screens/task_detail_screen.dart';
 import 'package:task_app/screens/user_list_screen.dart';
-import 'package:task_app/services/auth_service.dart';
 import 'package:task_app/widgets/task_item_widget.dart';
 import 'package:task_app/services/task_service.dart';
 import 'package:task_app/models/task_model.dart';
@@ -186,9 +185,17 @@ class TaskSearchDelegate extends SearchDelegate<String> {
         if (!snapshot.hasData || snapshot.data!.isEmpty) {
           return Center(child: Text("Không có công việc nào."));
         }
+        // Lọc danh sách công việc dựa trên từ khóa tìm kiếm
         final tasks = snapshot.data!;
-         debugPrint("Danh sách công việc: ${tasks.map((e) => e.title).toList()}");
-        final uniqueTasks = tasks.toSet().toList();
+        final uniqueTasks = tasks
+            .where((task) =>
+        task.title.toLowerCase().contains(query.toLowerCase()) || // Lọc theo tiêu đề
+            task.description.toLowerCase().contains(query.toLowerCase())) // Lọc theo mô tả
+            .toList();
+
+        if (uniqueTasks.isEmpty) {
+          return Center(child: Text("Không tìm thấy công việc nào."));
+        }
 
         return ListView.builder(
           itemCount: uniqueTasks.length,
